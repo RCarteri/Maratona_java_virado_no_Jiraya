@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.introducao;
+package academy.devdojo.maratonajava.introducao.aula01;
 
 public class OlaDevDojo {
     public static void main(String[] args) {
