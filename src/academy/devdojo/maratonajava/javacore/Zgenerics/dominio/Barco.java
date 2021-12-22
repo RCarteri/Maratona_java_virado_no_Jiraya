@@ -13,4 +13,8 @@ public class Barco {
     public Barco(String nome) {
         this.nome = nome;
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
