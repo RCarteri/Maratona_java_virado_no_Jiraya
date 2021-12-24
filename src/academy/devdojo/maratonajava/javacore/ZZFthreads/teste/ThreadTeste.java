@@ -20,9 +20,9 @@ class ThreadExample extends Thread{
 }
 
 class ThreadExampleRunnable implements Runnable{
-    private final char c;
+    private final String c;
 
-    public ThreadExampleRunnable(char c) {
+    public ThreadExampleRunnable(String c) {
         this.c = c;
     }
 
@@ -33,6 +33,11 @@ class ThreadExampleRunnable implements Runnable{
             System.out.print(c);
             if (i % 100 == 0){
                 System.out.println();
+            }
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -45,13 +50,15 @@ public class ThreadTeste {
 //        ThreadExample t2 = new ThreadExample('B');
 //        ThreadExample t3 = new ThreadExample('C');
 //        ThreadExample t4 = new ThreadExample('D');
-        Thread t1 = new Thread(new ThreadExampleRunnable('A'));
-        Thread t2 = new Thread(new ThreadExampleRunnable('B'));
-        Thread t3 = new Thread(new ThreadExampleRunnable('C'));
-        Thread t4 = new Thread(new ThreadExampleRunnable('D'));
+        Thread t1 = new Thread(new ThreadExampleRunnable02("A"));
+        Thread t2 = new Thread(new ThreadExampleRunnable02("B"));
+        Thread t3 = new Thread(new ThreadExampleRunnable02("C"));
+        Thread t4 = new Thread(new ThreadExampleRunnable02("D"));
+        t4.setPriority(Thread.MAX_PRIORITY);
         t1.start();
         t2.start();
         t3.start();
         t4.start();
+        System.out.println("#################" + Thread.currentThread().getName()) ;
     }
 }
